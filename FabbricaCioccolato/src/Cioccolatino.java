@@ -6,7 +6,7 @@ public class Cioccolatino extends Cioccolato {
     public void produce(){
 
         super.produce();
-
         System.out.println("Forma cioccolatino: " + forma + "\nRipieno: " + ripieno);
+        this.MAX_giornaliera -= 
     }
 }
