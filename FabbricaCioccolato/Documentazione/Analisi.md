@@ -5,7 +5,7 @@ Prima fase:
 seconda fase:
 
 scrittura classi con attributi e metodi.
-4 commit, uno per classe.
+5 commit, uno per classe.
 
 terza fase:
 
