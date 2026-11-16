@@ -1,6 +1,10 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Fabbrica {
     
     private int MAX_giornaliera;
+    private List<Cioccolato> cioccolataProdottaOggi = new ArrayList<>();
 
     public Cioccolato produce(String tipo, int quantita){
 
@@ -11,7 +15,8 @@ public class Fabbrica {
                 if(MAX_giornaliera - quantita >= 0){
 
                     MAX_giornaliera -= quantita;
-                    return new Cioccolatino();
+                    cioccolataProdottaOggi.addFirst(new Cioccolatino());
+                    return cioccolataProdottaOggi.getFirst();
                 }
                 else{
 
@@ -24,7 +29,8 @@ public class Fabbrica {
                 if(MAX_giornaliera - quantita >= 0){
 
                     MAX_giornaliera -= quantita;
-                    return new Tavoletta();
+                    cioccolataProdottaOggi.addFirst(new Tavoletta());
+                    return cioccolataProdottaOggi.getFirst();
                 }
                 else{
 
@@ -36,8 +42,17 @@ public class Fabbrica {
 
                 if(MAX_giornaliera - quantita >= 0){
 
-                    MAX_giornaliera -= quantita;
-                    return new CioccolatoCaldo();
+                    if(quantita >= 20){
+
+                        MAX_giornaliera -= quantita;
+                        cioccolataProdottaOggi.addFirst(new CioccolatoCaldo(quantita));
+                        return cioccolataProdottaOggi.getFirst();
+                    }
+                    else{
+
+                        System.out.println("Per fare la cioccolata calda servono almeno 20 cioccolato");
+                        return null;
+                    }
                 }
                 else{
 
@@ -55,5 +70,11 @@ public class Fabbrica {
     public void resetGiorno(){
 
         MAX_giornaliera = 100;
+        cioccolataProdottaOggi.clear();
+    }
+
+    public void stampaResoconto(){
+
+        System.out.println("");
     }
 }
